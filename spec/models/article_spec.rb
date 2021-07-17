@@ -16,7 +16,7 @@ RSpec.describe Article, type: :model do
     end
 
     it "has an invalid content" do
-      article.slug = ""
+      article.content = ""
       expect(article).not_to be_valid
       expect(article.errors[:content]).to include("can't be blank")
     end
