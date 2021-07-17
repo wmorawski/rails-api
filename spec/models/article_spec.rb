@@ -31,7 +31,7 @@ RSpec.describe Article, type: :model do
       first_article = create(:article)
       expect(first_article).to be_valid
 
-      second_article = create(:article, slug: first_article.slug)
+      second_article = build(:article, slug: first_article.slug)
       expect(second_article).not_to be_valid
 
       expect(second_article.errors[:slug]).to include("has already been taken")
