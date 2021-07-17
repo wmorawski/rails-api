@@ -15,22 +15,22 @@ RSpec.describe Article, type: :model do
       expect(article.errors[:title]).to include("can't be blank")
     end
 
-    pending "has an invalid content" do
+    it "has an invalid content" do
       article.slug = ""
       expect(article).not_to be_valid
       expect(article.errors[:content]).to include("can't be blank")
     end
 
-    pending "has an invalid slug" do
+    it "has an invalid slug" do
       article.slug = ""
       expect(article).not_to be_valid
       expect(article.errors[:slug]).to include("can't be blank")
     end
 
-    pending "validates the uniqueness of the slug" do
+    it "validates the uniqueness of the slug" do
       first_article = create(:article)
       expect(first_article).to be_valid
-      
+
       second_article = create(:article, slug: first_article.slug)
       expect(second_article).not_to be_valid
 
