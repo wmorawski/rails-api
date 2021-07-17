@@ -53,7 +53,7 @@ RSpec.describe ArticlesController do
 
       let(:article) { create :article }
 
-      before { :get_article }
+      before { get_article }
 
       it "returns a success response" do
         expect(response).to have_http_status(:ok)
