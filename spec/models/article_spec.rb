@@ -38,4 +38,23 @@ RSpec.describe Article, type: :model do
     end
     # rubocop:enable RSpec/MultipleExpectations
   end
+
+  describe ".recent" do
+    let(:older_article) { create(:article, created_at: 1.hour.ago) }
+    let(:recent_article) { create(:article) }
+
+    it "returns articles in the correct order" do
+      expect(described_class.recent).to eq(
+                                          [recent_article, older_article],
+                                        )
+    end
+
+    it "return articles in the correct order after update" do
+      described_class.update(recent_article.id, created_at: 2.hours.ago)
+
+      expect(described_class.recent).to eq(
+                                          [older_article, recent_article],
+                                        )
+    end
+  end
 end
