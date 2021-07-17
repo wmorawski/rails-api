@@ -1,0 +1,2 @@
+1. `:string` is a called **Symbol**, it can be just a string like `:"hello"`, a method or a class like `:article`
+2. we don't need to use FactoryBot.create because it's added in `rails_helper.rb` so we can use just a `create(symbol)` which will use a `factories/symbol.rb`
